@@ -19,9 +19,13 @@ It can create for cocos2dx project from version 3.4 to 4.0 available.<br>
 ＊You can set up win32 projects automatically with auto cmake checkbox.<br>
 ＊auto edit CmakeLists.txt for include all cpp/h files in Classes folder<br>
 <br>
+<br>
 ex) auto edit CmakeLists.txt<br>
 <img src="http://pds27.egloos.com/pds/202208/06/89/f0289989_62ee5f27c1239.jpg"><br>
 <br>
-ex) auto cmake win32 project<br>
+<br>
+ex) auto cmake win32 project<br><br>
 <img src="http://pds27.egloos.com/pds/202208/06/89/f0289989_62ee5f3a19ef4.jpg"><br>
 <br>
+<br>
+CAUTION : available cocos2d-x 3.4~4.0, but cmake function recommend for 4.0.<br>
