@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Cocos2dxWizard
 {
@@ -105,20 +106,73 @@ namespace Cocos2dxWizard
 
             psi.CreateNoWindow = true;
             psi.RedirectStandardOutput = true;
+            psi.RedirectStandardError = true;
             psi.UseShellExecute = false;
 
             Process proc = Process.Start(psi);
+            proc.StartInfo = psi;
+            proc.Start();
 
-            while (true)
+            string prjresult = proc.StandardOutput.ReadToEnd();
+            this.richTextBox1.Text += prjresult;
+            this.richTextBox1.Text += "\n";
+            this.richTextBox1.Text += "[Completed] generate project\n";
+            richTextBox1.SelectionStart = richTextBox1.TextLength;
+            richTextBox1.ScrollToCaret();
+
+            proc.WaitForExit();
+            proc.Close();
+
+            Thread.Sleep(3000);
+
+            if (checkBox2.Checked)
             {
-                string txt = proc.StandardOutput.ReadLine();
-                if (txt == null)
-                    break;
+                correctingCmake();
 
-                this.richTextBox1.Text += txt;
-                this.richTextBox1.Refresh();
-                Console.WriteLine(txt);
+                this.richTextBox1.Text += "[Edited] CmakeLists.txt\n";
+                richTextBox1.SelectionStart = richTextBox1.TextLength;
+                richTextBox1.ScrollToCaret();
             }
+
+            Thread.Sleep(3000);
+
+            if (checkBox1.Checked)
+            {
+                ProcessStartInfo cmake_psi = new ProcessStartInfo();
+                Process cmake_pro = new Process();
+
+                cmake_psi.FileName = @"cmd";
+                cmake_psi.CreateNoWindow = true;
+                cmake_psi.UseShellExecute = false;
+                cmake_psi.RedirectStandardOutput = true;
+                cmake_psi.RedirectStandardInput = true;
+                cmake_psi.RedirectStandardError = true;
+
+                cmake_pro.StartInfo = cmake_psi;
+                cmake_pro.Start();
+
+                string targetPath = destText.Text + "\\" + projectNameText.Text + "\\proj.win32";
+                string targetDrive = targetPath.Substring(0, 2);
+                //Process.Start(@targetDrive);
+                string cmake_cmd = "cmake .. -G\"Visual Studio 15 2017\" -Tv141";
+
+                cmake_pro.StandardInput.WriteLine(targetDrive);
+                cmake_pro.StandardInput.WriteLine(@"cd " + targetPath);
+                cmake_pro.StandardInput.WriteLine(cmake_cmd);
+                cmake_pro.StandardInput.Close();
+
+                string resulttext = cmake_pro.StandardOutput.ReadToEnd();
+                cmake_pro.WaitForExit();
+                cmake_pro.Close();
+
+                this.richTextBox1.Text += resulttext;
+                this.richTextBox1.Text += "\n";
+                this.richTextBox1.Text += "[Completed] win32 cmake\n";
+
+                richTextBox1.SelectionStart = richTextBox1.TextLength;
+                richTextBox1.ScrollToCaret();
+            }
+
 
             Debug.WriteLine("" + psi.Arguments);
         }
@@ -141,6 +195,14 @@ namespace Cocos2dxWizard
             }
             //Debug.WriteLine("Debug " + sender);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string cmake_cmd = "cmake .. -G\"Visual Studio 15 2017\" -Tv141";
+            this.richTextBox1.Text += "[copy to clipboard] " + cmake_cmd;
+            System.Windows.Forms.Clipboard.SetText(cmake_cmd);
+        }
+
         private void button4_Click(object sender, EventArgs e)//Sel dest folder
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -189,6 +251,7 @@ namespace Cocos2dxWizard
             sw.WriteLine(destText.Text);
             sw.WriteLine(isPortrait ? "true" : "false");
             sw.WriteLine(projectNameText.Text);
+            sw.WriteLine(checkBox1.Checked ? "true" : "false");
 
             sw.Close();
 
@@ -207,11 +270,40 @@ namespace Cocos2dxWizard
             isPortrait = (ip == "true");
             projectNameText.Text = sr.ReadLine();
 
+            string cmc = sr.ReadLine();
+            if (cmc != null)
+                checkBox1.Checked = (cmc == "true");
+
             sr.Close();
 
             this.radioButton1.Checked = isPortrait;
             this.radioButton2.Checked = !isPortrait;
 
+        }
+
+        void correctingCmake()
+        {
+            string targetPath = destText.Text + "\\" + projectNameText.Text + "\\";
+            //string targetDrive = targetPath.Substring(0, 2);
+            string fname = targetPath + "CMakeLists.txt";
+
+            string[] flines = File.ReadAllLines(fname);
+            for (int i = 0; i < flines.Length; i++)
+            {
+                if (flines[i] == "# add cross-platforms source files and header files ")
+                {
+                    flines[i + 1] = "file (GLOB_RECURSE MY_SOURCES Classes/*.cpp)";
+                    flines[i + 2] = "file (GLOB_RECURSE MY_HEADERS Classes/*.h)";
+                    flines[i + 3] = "list(APPEND GAME_SOURCE ${MY_SOURCES})";
+                    flines[i + 4] = "list(APPEND GAME_HEADER ${MY_HEADERS})";
+                    flines[i + 5] = "# edited by Cocos2D-x Wizard";
+                    flines[i + 6] = "# ";
+                    flines[i + 7] = "";
+                    flines[i + 8] = "";
+                }
+            }
+
+            File.WriteAllLines(fname, flines);
         }
     }
 }

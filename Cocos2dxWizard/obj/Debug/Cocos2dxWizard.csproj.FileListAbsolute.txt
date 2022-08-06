@@ -19,3 +19,13 @@ H:\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.csprojResolveAssemblyR
 H:\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.Form1.resources
 H:\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.Properties.Resources.resources
 H:\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.csproj.GenerateResource.Cache
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\bin\Debug\Cocos2dxWizard.exe.config
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\bin\Debug\Cocos2dxWizard.exe
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\bin\Debug\Cocos2dxWizard.pdb
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.csproj.AssemblyReference.cache
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.Form1.resources
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.Properties.Resources.resources
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.csproj.GenerateResource.cache
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.csproj.CoreCompileInputs.cache
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.exe
+D:\Drive_E\ggame_util\Cocos2dxWizard\Cocos2dxWizard\obj\Debug\Cocos2dxWizard.pdb
