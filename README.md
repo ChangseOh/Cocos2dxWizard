@@ -29,3 +29,4 @@ ex) auto cmake win32 project<br><br>
 <br>
 <br>
 CAUTION : available cocos2d-x 3.4~4.0, but cmake function recommend for 4.0.<br>
+CAUTION : If the win32 project is named HelloCpp, delete and recreate the entire project folder.<br>
