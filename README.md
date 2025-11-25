@@ -4,7 +4,7 @@ It can create for cocos2dx project from version 3.4 to 4.0 available.<br>
 <br>
 <img src="https://private-user-images.githubusercontent.com/8163689/517968136-6451434c-17a4-4654-84b9-6529f3199007.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM5NjQ0MTQsIm5iZiI6MTc2Mzk2NDExNCwicGF0aCI6Ii84MTYzNjg5LzUxNzk2ODEzNi02NDUxNDM0Yy0xN2E0LTQ2NTQtODRiOS02NTI5ZjMxOTkwMDcuanBnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MTEyNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTExMjRUMDYwMTU0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ODI4YzVkZjBjYWVhNDU3ZjcyNGUzNmZkNTJlNzA4ZTM4NWEwYjkyNDY3ZjBlYTQ2YWY2NTM0MGVmNjI5YzExNSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.uC461kwtUByTn-DARQaU7HOJ-5eXR2tRKjcQ8HIesMU"><br>
 <br>
-＊Tools-Console folder : [cocospath]/tools/cocos2d-conseol/bin/coco.bat<br>
+＊Tools-Console folder : [cocospath]/tools/cocos2d-conseol/bin/cocos.bat<br>
 ＊Project Name : It'll create project folder with same name.<br>
 ＊Package Name : as its name suggests.<br>
 ＊Language : can select c++, JS, Lua. but I use only c++ so I cannot guarantee that they will work.<br>
